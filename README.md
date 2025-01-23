@@ -1,66 +1,186 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Product Management Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a technical test given by **Cercia Diem** as part of the selection process for an alternance opportunity.
 
-## About Laravel
+## Project Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The application is a simple **product management system** built with Laravel and SQLite. It allows users to:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Manage products, including variations like size and color.
+- Organize products into categories.
+- Perform CRUD operations via a web interface built with **Tailwind CSS** or Artisan commands.
+- Use SQLite as the database backend for simplicity and portability.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Key Features
 
-## Learning Laravel
+1. **Product Management**
+ - Create, view, edit, and delete products.
+ - Add product variations (e.g., sizes, colors) with optional price adjustments.
+ - Display the total price (base price + variation prices).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. **Category Management**
+ - Create and manage product categories.
+ - Associate products with categories (one-to-many).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+3. **Command-Line Interface**
+ - Artisan commands are available to perform CRUD operations on products, categories, and variations.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. **SQLite Database**
+ - No external database setup is required. The project uses an SQLite file for all data storage.
 
-## Laravel Sponsors
+5. **Factory and Seeder**
+ - Generate sample data using Laravel factories and seeders.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+6. **Optional Bonus Features**
+ - Pagination for product lists.
+ - Search and filter by category.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Requirements
 
-## Contributing
+To run this project, you need:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- PHP 8.0 or later
+- Composer
+- Node.js and npm
+- SQLite (included by default in PHP)
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Installation
 
-## Security Vulnerabilities
+### 1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/product-management-test.git
+cd product-management-test
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2\. Install PHP dependencies:
+
+```bash
+composer install
+```
+
+### 3\. Install JavaScript dependencies:
+
+```bash
+npm install
+```
+
+### 4\. Set up the `.env` file:
+
+1.  Copy the example `.env` file:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+2.  Edit the `.env` file to include the following configuration:
+
+    ```env
+    APP_NAME=ProductManagementApp
+    APP_ENV=local
+    APP_KEY=base64:GENERATE_USING_PHP_ARTISAN_KEY:GENERATE
+    APP_DEBUG=true
+    APP_URL=http://127.0.0.1:8000
+
+    LOG_CHANNEL=stack
+    LOG_LEVEL=debug
+
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/database.sqlite
+
+    BROADCAST_DRIVER=log
+    CACHE_DRIVER=file
+    QUEUE_CONNECTION=sync
+    SESSION_DRIVER=file
+    SESSION_LIFETIME=120
+
+    VITE_DEV_SERVER_URL=http://localhost:5173
+    ```
+
+3.  Generate an application key:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+### 5\. Set up the database:
+
+1.  Create the SQLite database file:
+
+    ```bash
+    touch database/database.sqlite
+    ```
+
+2.  Run migrations and seed the database:
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+### 6\. Build assets and run the application:
+
+#### For development:
+
+1.  Start the Vite development server:
+
+    ```bash
+    npm run dev
+    ```
+
+2.  Start the Laravel development server:
+
+    ```bash
+    php artisan serve
+    ```
+
+Visit the application at http://127.0.0.1:8000.
+
+#### For production:
+
+1.  Build assets:
+
+    ```bash
+    npm run build
+    ```
+
+* * * * *
+
+## Artisan Commands
+----------------
+
+The following Artisan commands are available:
+
+1.  **Manage Products**
+
+    ```bash
+    php artisan manage:products list|create|update|delete
+    ```
+
+2.  **Manage Categories**
+
+    ```bash
+    php artisan manage:categories list|create|update|delete
+    ```
+
+3.  **Manage Variations**
+
+    ```bash
+    php artisan manage:variations list|create|update|delete
+    ```
+
+* * * * *
 
 ## License
+-------
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is for technical assessment purposes only and is not licensed for public or commercial use.
+
+* * * * *
+
+## Author
+------
+
+Developed by Lazaro Marrero Rousse as part of the technical test for Cercia Diem.
